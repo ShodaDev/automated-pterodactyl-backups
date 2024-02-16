@@ -43,7 +43,7 @@ def main():
             backupCreatedAt = backup["attributes"]["created_at"]
             backupId = backup["attributes"]["uuid"]
 
-            if (date - datetime.datetime.strptime(backupCreatedAt, "%Y-%m-%dT%H:%M:%S%z")) < datetime.timedelta(days=5):
+            if (date - datetime.datetime.strptime(backupCreatedAt, "%Y-%m-%dT%H:%M:%S%z")) < datetime.timedelta(days=config.delete_after_days):
                 print("Not deleting backup " + backupId + " for server " + serverIdentifier + " because it is not older than 5 days")
 
             else :
